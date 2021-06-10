@@ -9,12 +9,19 @@ public class Teste {
 		System.out.println("Quantos numeros deseja gerar: ");
 
 		// Variavel que receberá quantidade de numeros a serem gerados
-		int qtdNumbers = entrada.nextInt();
+		int qtdNumbers = entrada.nextInt();	
+		int[] arrayNumbers = new int[qtdNumbers];
+		generateArrayNoRepetedNumber(arrayNumbers);
 
 		System.out.println("");
 
-		// Array que recebera os numeros
-		int[] arrayNumbers = new int[qtdNumbers];
+	
+
+	
+
+	}
+	
+	public static int[] generateArrayNoRepetedNumber(int[] arrayNumbers) {
 
 		// Variavel que receberá o numero aleatorio pra ser validado
 		int auxRandom = 0;
@@ -37,8 +44,8 @@ public class Teste {
 				if (count >= 2 && j != 0) {
 					arrayNumbers[i] = 0;
 					repeatedNumbers++;
+					System.out.println(j + " é um numero repetido " + count + " vezes");
 					break;
-					// System.out.println(j + " é um numero repetido " + count + " vezes");
 				} else {
 
 					arrayNumbers[i] = auxRandom;
@@ -54,15 +61,18 @@ public class Teste {
 				y++;
 			}
 		}
-
+		
 		System.out.println(Arrays.toString(arrayNumbers));
 		System.out.println(Arrays.toString(noRepeatNumbers));
-
+		
+		return noRepeatNumbers;
+		
 	}
+	
 
 	// Gera numeros aleatorios de 1 a 100
 	public static int generateRandomNumber() {
-		int numberRandom = (int) Math.round((100 * Math.random()) + 1);
+		int numberRandom = (int) Math.round((99 * Math.random()) + 1);
 		return numberRandom;
 	}
 }
