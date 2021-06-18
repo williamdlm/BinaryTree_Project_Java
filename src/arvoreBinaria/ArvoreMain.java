@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArvoreMain {
+	static Scanner entrada = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Scanner entrada = new Scanner(System.in);
 
 		System.out.println("Quantos numeros deseja gerar: ");
 
@@ -28,9 +28,56 @@ public class ArvoreMain {
 		int responseOrder;
 
 		do {
+			System.out.println("#####################################" + "\n Qual opcao desejada?");
+			System.out.println("1: Remocao de no \n2: Ordenacao da arvore" + "\n0: Sair");
+			responseOrder = entrada.nextInt();
+
+			switch (responseOrder) {
+			case 0: {
+				System.out.println("Programa finalizado");
+				break;
+			}
+			case 1:{
+				remocao(arvore);
+			}
+			case 2:{
+				ordenacao(arvore);
+			}
+			}
+
+		} while (responseOrder != 0);
+		
+		
+
+	}
+	
+	public static void remocao(Arvore arvore) {
+		int responseOrder;
+		
+		do {
+
+			System.out.println("#####################################" + "\nQual numero voce deseja excluir?");
+			System.out.println("Digite 0 (zero) para retornar ao menu anterior");
+			responseOrder = entrada.nextInt();
+
+			if (responseOrder == 0) {
+				break;
+			}else{
+				arvore.remover(responseOrder);
+				System.out.println("Numero " + responseOrder + " excluido!");
+			}
+
+		} while (true);
+		main(null);
+	}
+	
+	public static void ordenacao(Arvore arvore) {
+		int responseOrder;
+		
+		do {
 
 			System.out.println("#####################################" + "\nEm qual ordem deseja ler a arvore?");
-			System.out.println("1: Em ordem \n2: Pre-ordem \n3: Pos-ordem" + "\n0: Sair");
+			System.out.println("1: Em ordem \n2: Pre-ordem \n3: Pos-ordem" + "\n0: Voltar menu anterior");
 			responseOrder = entrada.nextInt();
 
 			switch (responseOrder) {
@@ -62,10 +109,11 @@ public class ArvoreMain {
 
 			}
 		} while (responseOrder != 0);
+		main(null);
 
 //		System.out.println("\n Impressão da arvore em ordem");
 //		arvore.emOrdem(arvore.getRaiz());
-
+		
 	}
 
 	public static int[] generateArrayNoRepetedNumber(int[] arrayNumbers) {
