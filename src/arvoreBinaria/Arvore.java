@@ -1,21 +1,21 @@
 package arvoreBinaria;
 
-public class Arvore<TYPE extends Comparable<TYPE>> {
+public class Arvore {
 	
-	private Elemento<TYPE> raiz;
+	private Elemento raiz;
 	
 	public Arvore() {
 		this.raiz = null;
 	}
 	
-	public void adicionar(TYPE valor) {
-		Elemento<TYPE> novoElemento = new Elemento<TYPE>(valor);
+	public void adicionar(int valor) {
+		Elemento novoElemento = new Elemento(valor);
 		if(raiz == null) {
 			this.raiz = novoElemento;
 		}else {
-			Elemento<TYPE> atual = this.raiz;
+			Elemento atual = this.raiz;
 			while(true) {
-				if(novoElemento.getValor().compareTo(atual.getValor()) ==-1) {
+				if(novoElemento.getValor() < atual.getValor()) {
 					if(atual.getEsquerda() != null) {
 						atual = atual.getEsquerda();
 					}else {
@@ -37,11 +37,11 @@ public class Arvore<TYPE extends Comparable<TYPE>> {
 	
 	
 	
-	public Elemento<TYPE> getRaiz() {
+	public Elemento getRaiz() {
 		return raiz;
 	}
 
-	public void emOrdem(Elemento<TYPE> atual) {
+	public void emOrdem(Elemento atual) {
 		if(atual != null) {
 			emOrdem(atual.getEsquerda());
 			System.out.println(atual.getValor());
@@ -50,7 +50,7 @@ public class Arvore<TYPE extends Comparable<TYPE>> {
 		
 	}
 	
-	public void preOrdem(Elemento<TYPE> atual) {
+	public void preOrdem(Elemento atual) {
 		if(atual !=null) {
 			System.out.println(atual.getValor());
 			preOrdem(atual.getEsquerda());
@@ -58,11 +58,105 @@ public class Arvore<TYPE extends Comparable<TYPE>> {
 		}
 	}	
 	
-	public void posOrdem(Elemento<TYPE> atual) {
+	public void posOrdem(Elemento atual) {
 		if(atual != null){
 			posOrdem(atual.getEsquerda());
 			posOrdem(atual.getDireita());
 			System.out.println(atual.getValor());
 		}
 	}
+	
+	public boolean remover(int valor) {
+		Elemento atual = this.raiz;
+		Elemento paiAtual = null;
+		while(atual != null) {
+			if(atual.getValor() == valor) {
+				//Realizando a remoção do elemento da arvore
+				break;
+			}else if (atual.getValor() < valor){
+				paiAtual = atual;
+				atual = atual.getEsquerda();
+			}else {
+				paiAtual = atual;
+				atual = atual.getDireita();
+			}
+		}
+		
+		if(atual != null){
+			
+			//Elemento tem os dois filhos ou elemento tem filho a direta
+			if(atual.getDireita()!=null) {
+				//atual so tem filho a direita
+				
+				//atual so tem filho a esquerda
+				Elemento substituto = atual.getDireita();
+				Elemento paiSubstituto = atual;
+				
+				while(substituto.getEsquerda() != null) {
+					paiSubstituto = substituto;
+					substituto = substituto.getEsquerda();
+				}
+				if(paiAtual != null) {
+					if(atual.getValor() > paiAtual.getValor()) {
+						paiAtual.setDireita(substituto);
+					}else {
+						paiAtual.setEsquerda(substituto);
+					}
+				}else {
+					this.raiz = substituto;
+				}
+				
+				
+				//removendo o elemento da arvore
+				if(substituto.getValor() > paiSubstituto.getValor()) {
+					paiSubstituto.setDireita(null);
+				}else {
+					paiSubstituto.setEsquerda(null);
+				}
+				
+			}else if(atual.getEsquerda()!=null){
+				Elemento substituto = atual.getEsquerda();
+				Elemento paiSubstituto = atual;
+				
+				while(substituto.getDireita() != null) {
+					paiSubstituto = substituto;
+					substituto = substituto.getDireita();
+				}
+				if(paiAtual != null) {
+					if(atual.getValor() > paiAtual.getValor()) {
+						paiAtual.setDireita(substituto);
+					}else {
+						paiAtual.setEsquerda(substituto);
+					}
+				}else { //se for a raiz
+					this.raiz = substituto;
+				}
+				
+				
+				//removendo o elemento da arvore
+				if(substituto.getValor() > paiSubstituto.getValor()) {
+					paiSubstituto.setDireita(null);
+				}else {
+					paiSubstituto.setEsquerda(null);
+				}
+				
+			}else {
+				//atual não tem filhos
+				if(paiAtual != null) {
+					if(atual.getValor() > paiAtual.getValor()) {
+						paiAtual.setDireita(null);
+					}else {
+						paiAtual.setEsquerda(null);
+					}					
+				}else {
+					this.raiz = null;
+				}
+			}
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
 }

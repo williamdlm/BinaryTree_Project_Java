@@ -1,38 +1,38 @@
 package arvoreBinaria;
 
-public class Elemento<T> {
+public class Elemento {
 	
-	private T valor;
-	private Elemento<T> esquerda;
-	private Elemento<T> direita;
+	private int valor;
+	private Elemento esquerda;
+	private Elemento direita;
 	
-	public Elemento(T novoValor) {
+	public Elemento(int novoValor) {
 		this.valor = novoValor;
 		this.esquerda = null;
 		this.direita = null;
 	}
 
-	public Elemento<T> getEsquerda() {
+	public Elemento getEsquerda() {
 		return esquerda;
 	}
 
-	public void setEsquerda(Elemento<T> esquerda) {
+	public void setEsquerda(Elemento esquerda) {
 		this.esquerda = esquerda;
 	}
 
-	public Elemento<T> getDireita() {
+	public Elemento getDireita() {
 		return direita;
 	}
 
-	public void setDireita(Elemento<T> direita) {
+	public void setDireita(Elemento direita) {
 		this.direita = direita;
 	}
 
-	public T getValor() {
+	public int getValor() {
 		return valor;
 	}
 
-	public void setValor(T valor) {
+	public void setValor(int valor) {
 		this.valor = valor;
 	}
 	

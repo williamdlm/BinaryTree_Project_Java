@@ -19,7 +19,7 @@ public class ArvoreMain {
 
 		System.out.println("");
 
-		Arvore<Integer> arvore = new Arvore<Integer>();
+		Arvore arvore = new Arvore();
 
 		for (int i : arrayNumbers) {
 			arvore.adicionar(i);
