@@ -7,7 +7,7 @@ import arvoreAVL.Elemento;
 import arvoreBinaria.*;
 
 public class Executa extends arvoreBinaria.GenerateNumbers {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
 		System.out.println("Quantos numeros deseja gerar: ");
 
@@ -70,26 +70,38 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 		case (1): {
 			System.out.println("Digite um numero que deseja inserir");
 			int number = entrada.nextInt();
+			long start = System.currentTimeMillis();
 			arvoreAVL.inserir(new Elemento(number));
 			arvoreAVL.verificaBalanceamento();
+			long end = System.currentTimeMillis();
+			long tempoExecucao = end - start;
+			System.out.println("O tempo de execução foi de: " +tempoExecucao);
 			break;
 		}
 
 		case 2: {
 			System.out.println("Insira o numero que deseja buscar");
 			int number = entrada.nextInt();
+			long start = System.currentTimeMillis();
 			if (arvoreAVL.busca(number) == true) {
 				System.out.println("Numero existente da arvore");
 			} else {
 				System.out.println("Não existe");
 			}
+			long end = System.currentTimeMillis();
+			long tempoExecucao = end - start;
+			System.out.println("O tempo de execução foi de: " +tempoExecucao);
 
 			break;
 		}
 		case 3: {
 			System.out.println("Insira o numero que deseja remover");
 			int number = entrada.nextInt();
+			long start = System.currentTimeMillis();
 			arvoreAVL.remover(new Elemento(number));
+			long end = System.currentTimeMillis();
+			long tempoExecucao = end - start;
+			System.out.println("O tempo de execução foi de: " +tempoExecucao);
 			System.out.println("Finalizada remoção");
 			break;
 		}
@@ -104,20 +116,32 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 			switch (optionOrder) {
 			case 1: {
 				System.out.println("###EM ORDEM####");
+				long start = System.currentTimeMillis();
 				arvoreAVL.imprimirInOrdem();
+				long end = System.currentTimeMillis();
+				long tempoExecucao = end - start;
+				System.out.println("O tempo de execução foi de: " +tempoExecucao);
 
 				break;
 			}
 			case 2: {
 				System.out.println("###PRE ORDEM###");
+				long start = System.currentTimeMillis();
 				arvoreAVL.imprimirPreOrdem();
+				long end = System.currentTimeMillis();
+				long tempoExecucao = end - start;
+				System.out.println("O tempo de execução foi de: " +tempoExecucao);
 				break;
 
 			}
 			
 			case 3: {
 				System.out.println("###POS ORDEM###");
+				long start = System.currentTimeMillis();
 				arvoreAVL.imprimirPosOrdem();
+				long end = System.currentTimeMillis();
+				long tempoExecucao = end - start;
+				System.out.println("O tempo de execução foi de: " +tempoExecucao);
 				break;
 			}
 
@@ -129,7 +153,7 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 		}
 	}
 
-	public static void menuArvoreBinaria(Arvore arvore) {
+	public static void menuArvoreBinaria(Arvore arvore) throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
 		int option;
 
@@ -147,14 +171,22 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 				System.out.println("#### Adição ####");
 				System.out.println("Escreva o numero que deseja inserir:");
 				int number = entrada.nextInt();
+				long start = System.currentTimeMillis();
 				arvore.adicionar(number);
+				long end = System.currentTimeMillis();
+				long tempoExecucao = end - start;
+				System.out.println("O tempo de execução foi de: " +tempoExecucao);
 				break;
 			}
 			case 2: {
 				System.out.println("#### REMOÇÃO ####");
 				System.out.println("Escreva o numero que deseja remover:");
 				int number = entrada.nextInt();
+				long start = System.currentTimeMillis();
 				arvore.remover(number);
+				long end = System.currentTimeMillis();
+				long tempoExecucao = end - start;
+				System.out.println("O tempo de execução foi de: " +tempoExecucao);
 				break;
 			}
 			case 3: {
@@ -175,21 +207,34 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 					case 1: {
 						System.out.println("");
 						System.out.println("##### EM ORDEM #####");
+						long start = System.currentTimeMillis();
 						arvore.emOrdem(arvore.getRaiz());
+						//Thread.sleep(1000);
+						long end = System.currentTimeMillis();
+						long tempoExecucao = end - start;
+						System.out.println("O tempo de execução foi de: " +tempoExecucao);
 						System.out.println("");
 						break;
 					}
 					case 2: {
 						System.out.println("");
 						System.out.println("##### PRÉ ORDEM #####");
+						long start = System.currentTimeMillis();
 						arvore.preOrdem(arvore.getRaiz());
+						long end = System.currentTimeMillis();
+						long tempoExecucao = end - start;
+						System.out.println("O tempo de execução foi de: " +tempoExecucao);
 						System.out.println("");
 						break;
 					}
 					case 3: {
 						System.out.println("");
 						System.out.println("##### POS ORDEM #####");
+						long start = System.currentTimeMillis();
 						arvore.posOrdem(arvore.getRaiz());
+						long end = System.currentTimeMillis();
+						long tempoExecucao = end - start;
+						System.out.println("O tempo de execução foi de: " +tempoExecucao);
 						System.out.println("");
 						break;
 					}
