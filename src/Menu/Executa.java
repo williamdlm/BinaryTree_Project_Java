@@ -61,6 +61,7 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 		Scanner entrada = new Scanner(System.in);
 		System.out.println("####ARVORE AVL######");
 		System.out.println("####ESCOLHA UMA OPÇÃO######");
+		arvoreAVL.calcularBalanceamento();
 		System.out.println("1: Inserir \n2: Buscar \n3: Remover \n4: Ordernar \n0: Sair");
 		System.out.println("");
 		int option = entrada.nextInt();
@@ -70,6 +71,7 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 			System.out.println("Digite um numero que deseja inserir");
 			int number = entrada.nextInt();
 			arvoreAVL.inserir(new Elemento(number));
+			arvoreAVL.verificaBalanceamento();
 			break;
 		}
 
@@ -84,6 +86,45 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 
 			break;
 		}
+		case 3: {
+			System.out.println("Insira o numero que deseja remover");
+			int number = entrada.nextInt();
+			arvoreAVL.remover(new Elemento(number));
+			System.out.println("Finalizada remoção");
+			break;
+		}
+		case 4: {
+			int optionOrder;
+			do { 
+			System.out.println("#####################################" + "\nEm qual ordem deseja ler a arvore?");
+			System.out.println("1: Em ordem \n2: Pre-ordem \n3: Pos-ordem" + "\n0: Voltar menu anterior");
+
+			optionOrder = entrada.nextInt();
+
+			switch (optionOrder) {
+			case 1: {
+				System.out.println("###EM ORDEM####");
+				arvoreAVL.imprimirInOrdem();
+
+				break;
+			}
+			case 2: {
+				System.out.println("###PRE ORDEM###");
+				arvoreAVL.imprimirPreOrdem();
+				break;
+
+			}
+			
+			case 3: {
+				System.out.println("###POS ORDEM###");
+				arvoreAVL.imprimirPosOrdem();
+				break;
+			}
+
+			}
+
+		} while (optionOrder != 0);
+}
 
 		}
 	}
