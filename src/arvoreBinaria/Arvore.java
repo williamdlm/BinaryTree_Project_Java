@@ -8,6 +8,8 @@ public class Arvore {
 		this.raiz = null;
 	}
 	
+	
+	//METODO ADI플O
 	public void adicionar(int valor) {
 		Elemento novoElemento = new Elemento(valor);
 		if(raiz == null) {
@@ -37,35 +39,8 @@ public class Arvore {
 	
 	
 	
-	public Elemento getRaiz() {
-		return raiz;
-	}
 
-	public void emOrdem(Elemento atual) {
-		if(atual != null) {
-			emOrdem(atual.getEsquerda());
-			System.out.println(atual.getValor());
-			emOrdem(atual.getDireita());
-		}
-		
-	}
-	
-	public void preOrdem(Elemento atual) {
-		if(atual !=null) {
-			System.out.println(atual.getValor());
-			preOrdem(atual.getEsquerda());
-			preOrdem(atual.getDireita());
-		}
-	}	
-	
-	public void posOrdem(Elemento atual) {
-		if(atual != null){
-			posOrdem(atual.getEsquerda());
-			posOrdem(atual.getDireita());
-			System.out.println(atual.getValor());
-		}
-	}
-	
+	//METODO REMO플O
 	public boolean remover(int valor) {
 		Elemento atual = this.raiz;
 		Elemento paiAtual = null;
@@ -73,7 +48,7 @@ public class Arvore {
 			if(atual.getValor() == valor) {
 				//Realizando a remo豫o do elemento da arvore
 				break;
-			}else if (atual.getValor() < valor){
+			}else if (atual.getValor() > valor){
 				paiAtual = atual;
 				atual = atual.getEsquerda();
 			}else {
@@ -157,6 +132,42 @@ public class Arvore {
 			return false;
 		}
 		
+	}
+	
+	//----- FINAL METODO REMO플O -----
+	
+	//  ------ METODOS ORDENA플O --------
+	public void emOrdem(Elemento atual) {
+		if(atual != null) {
+			emOrdem(atual.getEsquerda());
+			System.out.println(atual.getValor());
+			emOrdem(atual.getDireita());
+		}
+		
+	}
+	
+	public void preOrdem(Elemento atual) {
+		if(atual !=null) {
+			System.out.println(atual.getValor());
+			preOrdem(atual.getEsquerda());
+			preOrdem(atual.getDireita());
+		}
+	}	
+	
+	public void posOrdem(Elemento atual) {
+		if(atual != null){
+			posOrdem(atual.getEsquerda());
+			posOrdem(atual.getDireita());
+			System.out.println(atual.getValor());
+		}
+	}
+	
+	//-----FINAL METODO DE ORDENA플O-------
+	
+	//Getters and Setters
+	
+	public Elemento getRaiz() {
+		return raiz;
 	}
 	
 }
