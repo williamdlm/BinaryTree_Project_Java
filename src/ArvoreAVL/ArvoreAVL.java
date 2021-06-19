@@ -1,4 +1,4 @@
-package ArvoreAVL;
+package arvoreAVL;
 
 public class ArvoreAVL {
 	private Elemento ele;

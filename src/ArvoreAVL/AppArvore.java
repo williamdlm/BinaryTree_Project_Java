@@ -1,4 +1,4 @@
-package ArvoreAVL;
+package arvoreAVL;
 
 import java.util.Scanner;
 

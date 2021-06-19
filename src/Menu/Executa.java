@@ -1,7 +1,9 @@
-package Menu;
+package menu;
 
 import java.util.Scanner;
 
+import arvoreAVL.ArvoreAVL;
+import arvoreAVL.Elemento;
 import arvoreBinaria.*;
 
 public class Executa extends arvoreBinaria.GenerateNumbers {
@@ -15,26 +17,79 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 		arrayNumbers = generateArrayNoRepetedNumber(arrayNumbers);
 
 		System.out.println("");
-		
-		//Instancia Arvore Binaria
+
+		// Instancia Arvore Binaria
 		Arvore arvore = new Arvore();
-		
-		//Instancia Arvore AVL
-		
-		
-		System.out.println("Qual estrutura de dados deseja usar?");
-		System.out.println("1: Arvore binaria \n2: Arvore AVL");
-		int chooseTree = entrada.nextInt();
-		if(chooseTree == 1) {
-			
-			for (int i : arrayNumbers) {
-				arvore.adicionar(i);
+
+		// Instancia Arvore AVL
+		ArvoreAVL arvoreAvl = new ArvoreAVL();
+
+		int key;
+		do {
+			System.out.println("Qual estrutura de dados deseja usar?");
+			System.out.println("1: Arvore binaria \n2: Arvore AVL \n0: Sair");
+			key = entrada.nextInt();
+			switch (key) {
+			case 0: {
+				System.out.println("Programa finalizado");
+				break;
 			}
-		}else {
-			
+
+			case 1: {
+				for (int i : arrayNumbers) {
+					arvore.adicionar(i);
+				}
+
+				menuArvoreBinaria(arvore);
+
+				break;
+			}
+			case 2: {
+				for (int i : arrayNumbers) {
+					arvoreAvl.inserir(new Elemento(i));
+				}
+				menuArvoreAvl(arvoreAvl);
+				break;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + key);
+			}
+		} while (key != 0);
+	}
+
+	public static void menuArvoreAvl(ArvoreAVL arvoreAVL) {
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("####ARVORE AVL######");
+		System.out.println("####ESCOLHA UMA OPÇÃO######");
+		System.out.println("1: Inserir \n2: Buscar \n3: Remover \n4: Ordernar \n0: Sair");
+		System.out.println("");
+		int option = entrada.nextInt();
+
+		switch (option) {
+		case (1): {
+			System.out.println("Digite um numero que deseja inserir");
+			int number = entrada.nextInt();
+			arvoreAVL.inserir(new Elemento(number));
+			break;
 		}
 
+		case 2: {
+			System.out.println("Insira o numero que deseja buscar");
+			int number = entrada.nextInt();
+			if (arvoreAVL.busca(number) == true) {
+				System.out.println("Numero existente da arvore");
+			} else {
+				System.out.println("Não existe");
+			}
 
+			break;
+		}
+
+		}
+	}
+
+	public static void menuArvoreBinaria(Arvore arvore) {
+		Scanner entrada = new Scanner(System.in);
 		int option;
 
 		do {
@@ -44,7 +99,7 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 
 			switch (option) {
 			case 0: {
-				System.out.println("PROGRAMA FINALIZADO");
+				System.out.println("RETORNADO PARA ESCOLHA DA ARVORE");
 				break;
 			}
 			case 1: {
@@ -104,6 +159,5 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 			}
 
 		} while (option != 0);
-
 	}
 }
