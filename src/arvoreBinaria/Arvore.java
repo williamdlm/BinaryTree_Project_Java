@@ -3,9 +3,34 @@ package arvoreBinaria;
 public class Arvore {
 	
 	private Elemento raiz;
+	private Arvore dir;
+    private Arvore esq;
 	
 	public Arvore() {
 		this.raiz = null;
+		this.dir = null;
+		this.esq = null;
+	}
+	
+	public Arvore(Elemento elem) {
+		this.raiz = elem;
+		this.dir = null;
+		this.esq = null;
+		
+	}
+	
+	//Calcular altura
+	
+	public int calcularAltura() {
+		if (this.esq == null && this.dir == null) {// Não tem filhos
+			return 1;
+		} else if (this.esq != null && this.dir == null) {
+			return 1 + this.esq.calcularAltura();
+		} else if (this.esq == null && this.dir != null) {
+			return 1 + this.dir.calcularAltura();
+		} else {
+			return 1 + Math.max(this.esq.calcularAltura(), this.dir.calcularAltura());
+		}
 	}
 	
 	

@@ -62,7 +62,7 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 		System.out.println("####ARVORE AVL######");
 		System.out.println("####ESCOLHA UMA OPÇÃO######");
 		arvoreAVL.calcularBalanceamento();
-		System.out.println("1: Inserir \n2: Buscar \n3: Remover \n4: Ordernar \n0: Sair");
+		System.out.println("1: Inserir \n2: Buscar \n3: Remover \n4: Ordernar \n5: Calcular altura   \n0: Sair");
 		System.out.println("");
 		int option = entrada.nextInt();
 
@@ -109,7 +109,7 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 			int optionOrder;
 			do { 
 			System.out.println("#####################################" + "\nEm qual ordem deseja ler a arvore?");
-			System.out.println("1: Em ordem \n2: Pre-ordem \n3: Pos-ordem" + "\n0: Voltar menu anterior");
+			System.out.println("1: Em ordem \n2: Pre-ordem \n3: Pos-ordem" +"\n0: Voltar menu anterior");
 
 			optionOrder = entrada.nextInt();
 
@@ -149,6 +149,12 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 
 		} while (optionOrder != 0);
 }
+		case 5:{
+			System.out.println("A altura da arvore:");
+			System.out.println(arvoreAVL.calcularAltura());
+			break;
+			
+		}
 
 		}
 	}
@@ -159,7 +165,7 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 
 		do {
 			System.out.println("#####################################" + "\nESCOLHA UMA OPÇÃO.:");
-			System.out.println("1: Inserir \n2: Remover \n3: Ordenar \n0: Sair");
+			System.out.println("1: Inserir \n2: Remover \n3: Ordenar \n4: Calcular altura \n0: Sair");
 			option = entrada.nextInt();
 
 			switch (option) {
@@ -241,6 +247,11 @@ public class Executa extends arvoreBinaria.GenerateNumbers {
 
 					}
 				} while (optionOrder != 0);
+			}case 4:{
+				System.out.println("Altura é:");
+				System.out.println(arvore.calcularAltura());
+				break;
+				
 			}
 			}
 
